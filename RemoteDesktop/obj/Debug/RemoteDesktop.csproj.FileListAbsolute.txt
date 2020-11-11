@@ -1,0 +1,7 @@
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\obj\Debug\RemoteDesktop.csprojAssemblyReference.cache
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\obj\Debug\RemoteDesktop.csproj.CoreCompileInputs.cache
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\bin\Debug\RemoteDesktop.exe.config
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\bin\Debug\RemoteDesktop.exe
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\bin\Debug\RemoteDesktop.pdb
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\obj\Debug\RemoteDesktop.exe
+C:\Users\rsharma\source\repos\RemoteDesktop\RemoteDesktop\obj\Debug\RemoteDesktop.pdb
