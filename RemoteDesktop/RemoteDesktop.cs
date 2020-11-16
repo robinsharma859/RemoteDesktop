@@ -20,6 +20,9 @@ namespace RemoteDesktop
 
         public RemoteDesktop()
         {
+            string paramerter = Environment.GetEnvironmentVariable("WorkerVM");
+            Console.WriteLine("the paramerts are " + paramerter);
+            Debug.WriteLine("paaramerts in debug " + paramerter);
             process = new Process();
             userCreds = new UserCreds() {userName="centraluser",password="$abcd1234" };
             processStartInfo = new ProcessStartInfo();
