@@ -12,6 +12,7 @@ namespace RemoteDesktop
 
         static void Main(string[] args)
         {
+            Console.WriteLine("arguments passed to main method are" +  args[0] +   " close connection" +  args[1]);
             RemoteDesktop remoteDesktop = new RemoteDesktop();
             remoteDesktop.RemoteDesktopMachines();
         }

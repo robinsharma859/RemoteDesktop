@@ -17,18 +17,34 @@ namespace RemoteDesktop
         private HashSet<string> VMName = new HashSet<string>() { "cha-en-vcdwp227" };  //cha-en-vcdwp227
         string argument = string.Empty;
         UserCreds userCreds = null;
-
+        string[] parameter = null;
+        bool closeConnection = false;
         public RemoteDesktop()
         {
-            string paramerter = Environment.GetEnvironmentVariable("WorkerVM");
-            Console.WriteLine("the paramerts are " + paramerter);
-            Debug.WriteLine("paaramerts in debug " + paramerter);
+            parameter = Environment.GetEnvironmentVariable("WorkerVM").Split(';') ;
+            closeConnection = Convert.ToBoolean(Environment.GetEnvironmentVariable("CloseExistingVM"));
+            Console.WriteLine("the paramerts are " + parameter[0]);
+            Debug.WriteLine("paaramerts in debug " + Environment.GetEnvironmentVariable("CloseExistingVM"));
             process = new Process();
             userCreds = new UserCreds() {userName="centraluser",password="$abcd1234" };
             processStartInfo = new ProcessStartInfo();
+            
         }
         public void RemoteDesktopMachines()
         {
+            if(closeConnection)
+            {
+                Process[] processes = Process.GetProcessesByName("mstsc");
+
+                if (processes.Length > 0)
+                {
+                    foreach (Process p in processes)
+                    {
+                        p.Kill();
+                    }
+                }
+            }
+
             SecureString secureString = new SecureString();
             Array.ForEach(userCreds.password.ToArray(), secureString.AppendChar);
             secureString.MakeReadOnly();
@@ -52,13 +68,17 @@ namespace RemoteDesktop
                 //process.StartInfo.UserName = userCreds.userName;
                 //process.StartInfo.Password = userCreds.password;
                 //process.StartInfo.Arguments="/v" +  
-
-                String szCmd = "/c cmdkey.exe /generic:"+ VMName.FirstOrDefault() +  @"/user:centraluser" +" /pass:$abcd1234 & mstsc.exe /v " +  VMName.FirstOrDefault();
-                ProcessStartInfo info = new ProcessStartInfo("cmd.exe", szCmd);
-                info.Domain = "wsdt";
-                Process proc = new Process();
-                proc.StartInfo = info;
-                proc.Start();
+                foreach (var item in parameter)
+                {
+                    Console.WriteLine("the VM remote called for  = " + item);
+                    String szCmd = "/c cmdkey.exe /generic:" + item + @"/user:centraluser" + " /pass:$abcd1234 & mstsc.exe /v " + item;
+                    ProcessStartInfo info = new ProcessStartInfo("cmd.exe", szCmd);
+                    info.Domain = "wsdt";
+                    Process proc = new Process();
+                    proc.StartInfo = info;
+                    proc.Start();
+                }
+               
 
             }
 
