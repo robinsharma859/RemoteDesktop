@@ -1,0 +1,15 @@
+﻿<Configuration>
+  <DeploymentMode>{OnPremise-Enterprise}</DeploymentMode>
+  <DevMode>{true}</DevMode>
+  <TimeOut>60</TimeOut>
+  <EmailIds></EmailIds>
+  <Retry>false</Retry>
+  <SapServer></SapServer>
+  <Environment></Environment>
+  <RunBeforeSuite>true</RunBeforeSuite>
+  <CaptureScreenShot>false</CaptureScreenShot>
+  <SkipDefected>false</SkipDefected>
+  <URL>https://www.google.com</URL>
+  <UserName>{sexyBoy}</UserName>
+  <Browser>Chrome</Browser>
+</Configuration>
